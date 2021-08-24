@@ -1,0 +1,2 @@
+# test-easilys
+BabyFoot Manager
