@@ -1,0 +1,68 @@
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+#form {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 20px 0;
+}
+
+#name-input {
+  min-width: 400px;
+}
+
+.title-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 15px;
+  padding: 8px;
+}
+
+.title-header > h2 {
+  margin: 0px;
+}
+
+.blue-box {
+  background-color: cornflowerblue;
+  border-radius: 8px;
+  color: cornsilk;
+  text-align: center;
+  font-size: 1.3em;
+  padding: 10px;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+#matches {
+  margin-top: 30px;
+}
+
+.match {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 500px;
+  margin-bottom: 5px;
+}
+
+.match-name {
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 300px;
+}
