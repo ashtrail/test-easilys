@@ -61,6 +61,6 @@ The API has the following dependencies :
 I used these packages for development :
 
 - [nodemon](https://github.com/remy/nodemon) in order to restart the app when a file has changed.
-- [jest](https://jestjs.io/) and [supertest](https://github.com/visionmedia/supertest) for testing.
+- [jest](https://jestjs.io/) for testing.
 - [eslint](https://github.com/eslint/eslint) for linting.
 - [prettier](https://github.com/prettier/prettier) for code formatting.
