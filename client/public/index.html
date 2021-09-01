@@ -37,54 +37,54 @@
   let matches = [
     {
       id: 1,
-      name: "Vincent vs Maxime",
+      name: 'Vincent vs Maxime',
       completed: false,
     },
     {
       id: 2,
-      name: "Test",
+      name: 'Test',
       completed: true,
     },
     {
       id: 3,
-      name: "Test 2",
+      name: 'Test 2',
       completed: false,
     },
-  ];
+  ]
 
-  let idx = matches.length;
+  let idx = matches.length
 
   const onDelete = (id) => {
-    const index = matches.findIndex((match) => match.id === id);
+    const index = matches.findIndex((match) => match.id === id)
     if (index > -1) {
-      matches.splice(index, 1);
-      view.updateMatches(matches);
+      matches.splice(index, 1)
+      view.updateMatches(matches)
     }
-  };
-
-  const view = new View(onDelete);
-
-  view.updateMatches(matches);
-
-  const form = document.getElementById("form");
-  const input = document.getElementById("name-input");
-
-  function addMatch(newMatch) {
-    matches = [newMatch, ...matches];
-    view.updateMatches(matches);
   }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const view = new View(document, onDelete)
+
+  view.updateMatches(matches)
+
+  const form = document.getElementById('form')
+  const input = document.getElementById('name-input')
+
+  function addMatch(newMatch) {
+    matches = [newMatch, ...matches]
+    view.updateMatches(matches)
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault()
     if (input.value) {
       const newMatch = {
         id: idx++,
         name: input.value,
         completed: false,
-      };
-      input.value = "";
+      }
+      input.value = ''
 
-      addMatch(newMatch);
+      addMatch(newMatch)
     }
-  });
+  })
 </script>
