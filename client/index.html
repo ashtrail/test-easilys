@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Babyfoot Match Manager</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" action="submit">
+        <input id="name-input" type="text" placeholder="Nouvelle partie..." />
+        <button id="add-button" class="blue-box">Ajouter</button>
+      </form>
+
+      <div class="match-container">
+        <div class="title-header">
+          <h2 class="blue-box">Les parties</h2>
+          <h2 id="match-number" class="blue-box">3</h2>
+        </div>
+
+        <ul id="matches">
+          <li class="match">
+            <input type="checkbox" />
+            <div>Vincent vs Maxime</div>
+            <button>X</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript" src="view.js"></script>
+<script type="text/javascript">
+  let matches = [
+    {
+      id: 1,
+      name: "Vincent vs Maxime",
+      completed: false,
+    },
+    {
+      id: 2,
+      name: "Test",
+      completed: true,
+    },
+    {
+      id: 3,
+      name: "Test 2",
+      completed: false,
+    },
+  ];
+
+  let idx = matches.length;
+
+  const onDelete = (id) => {
+    const index = matches.findIndex((match) => match.id === id);
+    if (index > -1) {
+      matches.splice(index, 1);
+      view.updateMatches(matches);
+    }
+  };
+
+  const view = new View(onDelete);
+
+  view.updateMatches(matches);
+
+  const form = document.getElementById("form");
+  const input = document.getElementById("name-input");
+
+  function addMatch(newMatch) {
+    matches = [newMatch, ...matches];
+    view.updateMatches(matches);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (input.value) {
+      const newMatch = {
+        id: idx++,
+        name: input.value,
+        completed: false,
+      };
+      input.value = "";
+
+      addMatch(newMatch);
+    }
+  });
+</script>
