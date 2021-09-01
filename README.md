@@ -22,7 +22,8 @@ Clone the repo and run yarn to download the dependencies.
 > yarn
 ```
 
-Copy `.env.example` in the root folder, rename it `.env` and fill in the missing and/or incorrect fields. Then add a symbolic link to it in the API folder.
+Copy the `.env.example` file located in the root folder, rename it `.env` and fill in the missing and/or incorrect fields. If you want to see the queries made to the database set `LOG_DB_QUERIES` to `true`.
+Then add a symbolic link to this `.env` file in the API folder.
 
 ```
 > cd api
@@ -55,6 +56,7 @@ The API has the following dependencies :
 
 - [Socket.io](https://socket.io/) as the socket library.
 - [dotenv](https://github.com/motdotla/dotenv) to load the environment configuration.
+- [node-postgres](https://github.com/brianc/node-postgres) to make PostgreSQL queries.
 
 I used these packages for development :
 

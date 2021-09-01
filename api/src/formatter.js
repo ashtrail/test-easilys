@@ -1,7 +1,7 @@
 const log = require('./logger')
 
 module.exports = {
-  response: (body) => {
+  response: (body = {}) => {
     const res = {
       status: 'OK',
       data: body,
@@ -10,12 +10,15 @@ module.exports = {
     return res
   },
 
-  error: (body) => {
+  error: (type = 'unknown', details = {}) => {
     const error = {
       status: 'KO',
-      error: body,
+      error: {
+        type,
+        details,
+      },
     }
-    log('Sent back error:', res)
+    log('Sent back error:', error)
     return error
   },
 }
