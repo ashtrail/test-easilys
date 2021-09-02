@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Babyfoot Match Manager</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" action="submit">
+        <input id="name-input" type="text" placeholder="Nouvelle partie..." />
+        <button id="add-button" class="blue-box">Ajouter</button>
+      </form>
+
+      <div class="match-container">
+        <div class="title-header">
+          <h2 class="blue-box">Les parties</h2>
+          <h2 id="match-number" class="blue-box">3</h2>
+        </div>
+
+        <ul id="matches">
+          <!-- matches will be inserted here -->
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="match-manager.js"></script>
+<script type="text/javascript">
+  const port = <%= apiPort %>
+  const socket = io(`http://localhost:${port}/`);
+
+
+  const manager = new MatchManager(document, socket, [])
+
+  socket.emit('match:list', (res) => {
+    if (res.status === 'OK') {
+      manager.updateMatches(res.data)
+    } else {
+      console.log(res.error)
+    }
+  })
+
+  socket.on('match:created', function (match) {
+    manager.addMatch(match)
+  })
+
+  socket.on('match:updated', function (match) {
+    manager.updateMatch(match.id, match)
+  })
+
+  socket.on('match:deleted', function (id) {
+    manager.deleteMatch(id)
+  })
+</script>

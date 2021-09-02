@@ -45,24 +45,37 @@ body {
   text-align: center;
   font-size: 1.3em;
   padding: 10px;
-  min-width: 25px;
-  min-height: 25px;
+  /* border-style: none; */
+}
+
+#match-number {
+  min-width: 28px;
 }
 
 #matches {
   margin-top: 30px;
+  padding: 0;
 }
 
 .match {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-width: 500px;
-  margin-bottom: 5px;
+  width: 450px;
+  margin: 0 auto 5px auto;
+}
+
+.match > input[type='checkbox'] {
+  margin: 0;
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
 }
 
 .match-name {
-  padding-left: 5px;
-  padding-right: 5px;
-  width: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 400px;
 }
