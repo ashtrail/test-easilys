@@ -94,6 +94,7 @@ describe('Server', () => {
           expect(res.status).toEqual('OK')
           expect(res.data.name).toEqual(match.name)
           expect(res.data.completed).toEqual(match.completed)
+          expect(res.data.created_at).toEqual(res.data.updated_at)
         })
       })
 
@@ -138,6 +139,7 @@ describe('Server', () => {
           assertionWrapper(done, partialDone, () => {
             expect(res.status).toEqual('OK')
             expect(res.data.completed).toEqual(true)
+            expect(res.data.created_at).not.toEqual(res.data.updated_at)
           })
         })
 

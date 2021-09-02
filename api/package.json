@@ -11,6 +11,7 @@
     "test": "NODE_ENV=test jest",
     "db:setup": "node db/setup.js",
     "db:seed": "node db/seeder.js",
+    "db:reset": "yarn db:setup && yarn db:seed",
     "db:test:setup": "NODE_ENV=test yarn db:setup",
     "db:test:seed": "NODE_ENV=test yarn db:seed"
   },

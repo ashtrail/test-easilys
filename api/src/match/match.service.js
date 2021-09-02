@@ -6,7 +6,9 @@ const createTable = async () => {
     CREATE TABLE matches (
       id SERIAL PRIMARY KEY,
       name varchar(200) NOT NULL,
-      completed boolean NOT NULL
+      completed boolean NOT NULL,
+      created_at timestamp NOT NULL,
+      updated_at timestamp NOT NULL
     );
   `
   )
@@ -17,9 +19,10 @@ const dropTable = async () => {
 }
 
 const createOne = async (name, completed = false) => {
+  const now = new Date().toISOString()
   const res = await query(
-    'INSERT INTO matches(name, completed) VALUES($1, $2) RETURNING *',
-    [name, completed]
+    'INSERT INTO matches(name, completed, created_at, updated_at) VALUES($1, $2, $3, $3) RETURNING *',
+    [name, completed, now]
   )
   return res.rows[0]
 }
@@ -44,13 +47,14 @@ const getById = async (id) => {
 }
 
 const updateById = async (id, { name, completed }) => {
+  const now = new Date().toISOString()
   await query(
     `
       UPDATE matches
-      SET name = $1, completed = $2
-      WHERE id = $3
+      SET name = $1, completed = $2, updated_at = $3
+      WHERE id = $4
     `,
-    [name, completed, id]
+    [name, completed, now, id]
   )
   return getById(id)
 }
