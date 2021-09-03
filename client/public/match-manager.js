@@ -57,7 +57,7 @@ class MatchManager {
         }
         input.value = ''
 
-        socket.emit('match:create', newMatch, (res) => {
+        this.socket.emit('match:create', newMatch, (res) => {
           if (res.status === 'OK') {
             this.addMatch(res.data)
           } else {
@@ -77,7 +77,7 @@ class MatchManager {
     checkbox.type = 'checkbox'
     checkbox.checked = completed
     checkbox.onclick = () => {
-      socket.emit(
+      this.socket.emit(
         'match:update',
         id,
         { ...match, completed: !completed },
@@ -101,7 +101,7 @@ class MatchManager {
     const deleteButton = this.document.createElement('button')
     deleteButton.textContent = 'X'
     deleteButton.onclick = () => {
-      socket.emit('match:delete', id, (res) => {
+      this.socket.emit('match:delete', id, (res) => {
         if (res.status === 'OK') {
           this.deleteMatch(id)
         } else {

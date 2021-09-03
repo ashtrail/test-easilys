@@ -29,7 +29,7 @@ const createOne = async (name, completed = false) => {
 
 const createMany = async (matches) => {
   const result = []
-  for (match of matches) {
+  for (let match of matches) {
     const entry = await createOne(match.name, match.completed)
     result.push(entry)
   }
